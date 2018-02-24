@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
-        //Code to check if user is logged in:
-     //   if PFUser.current() != nil {
-       //     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         //   window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "feedScreen")
-       // }
+        // Code to check if user is logged in:
+        if PFUser.current() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "homeFeedNavigationController")
+        }
         
         // Create notification observer:
         NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in

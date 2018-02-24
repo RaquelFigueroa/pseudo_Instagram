@@ -89,7 +89,7 @@
                     <connections>
                         <outlet property="passwordField" destination="BoC-zz-CC9" id="rf6-Nh-vCn"/>
                         <outlet property="usernameField" destination="AZ9-6s-QCT" id="tyn-X7-AKM"/>
-                        <segue destination="Q0e-Xj-f6L" kind="presentation" id="yTM-Fc-NYw"/>
+                        <segue destination="Q0e-Xj-f6L" kind="presentation" identifier="loginSegue" id="XHx-MS-nel"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -99,7 +99,7 @@
         <!--Home Feed-->
         <scene sceneID="LS7-8M-Ixa">
             <objects>
-                <viewController storyboardIdentifier="feedScreen" id="mRg-a3-qyX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedScreen" id="mRg-a3-qyX" customClass="homeFeedViewController" customModule="pseudo_Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jkw-GK-d6Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +115,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i7M-eq-z96" id="9JP-ZT-fin">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="194.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNx-Rn-S63">
+                                                    <rect key="frame" x="233" y="65" width="81" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -123,7 +132,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8Js-h5-GCl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home Feed" id="iKM-GN-LFw"/>
+                    <navigationItem key="navigationItem" title="Home Feed" id="iKM-GN-LFw">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GZ3-bj-wqt" userLabel="I">
+                            <connections>
+                                <action selector="logout:" destination="mRg-a3-qyX" id="msS-ev-TrE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCb-SZ-H6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,7 +147,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HdI-aG-RM9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q0e-Xj-f6L" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="homeFeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Q0e-Xj-f6L" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZ6-Pa-3YJ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
