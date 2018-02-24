@@ -3,6 +3,7 @@
 
 target 'pseudo_Instagram' do
   pod 'Parse'
+  pod 'ParseUI'
   use_frameworks!
 
   # Pods for pseudo_Instagram
