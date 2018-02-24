@@ -24,7 +24,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://pacific-anchorage-49623.herokuapp.com/parse"
             })
         )
+        
+        //Code to check if user is logged in:
+     //   if PFUser.current() != nil {
+       //     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         //   window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "feedScreen")
+       // }
+        
+        // Create notification observer:
+        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Logout notification received")
+            // TODO: Logout the User
+            self.logOut()
+            
+            // TODO: Load and show the login view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginScreen")
+            self.window?.rootViewController = loginViewController
+        }
         return true
+    }
+    
+    
+    // Logout function:
+    func logOut() {
+        PFUser.logOutInBackground { (error) in
+            if let error = error {
+                print (error.localizedDescription)
+            } else {
+                print ("Successfully logged out")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginScreen")
+                self.window?.rootViewController = loginViewController
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
