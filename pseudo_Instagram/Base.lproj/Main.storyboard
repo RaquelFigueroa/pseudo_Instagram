@@ -31,7 +31,7 @@
                                 <rect key="frame" x="62" y="308" width="291" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBf-7d-2f6">
                                 <rect key="frame" x="62" y="354" width="291" height="30"/>
@@ -104,12 +104,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-OC-dkM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CG1-OC-dkM">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="383" id="0cH-lL-rus" customClass="PostCell" customModule="pseudo_Instagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="383" id="0cH-lL-rus" customClass="PostCell" customModule="pseudo_Instagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="383"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0cH-lL-rus" id="thF-D2-b8m">
@@ -140,9 +141,11 @@
                                                 <constraint firstItem="bRu-Pd-Nl3" firstAttribute="top" secondItem="orR-vK-9aR" secondAttribute="bottom" constant="8" id="YMw-L6-5Mo"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="postImageView" destination="orR-vK-9aR" id="ehF-af-o55"/>
                                             <outlet property="postLabel" destination="bRu-Pd-Nl3" id="ln1-cN-u0E"/>
+                                            <segue destination="AeH-VH-WHJ" kind="show" id="X3s-p1-uez"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -171,7 +174,63 @@
             </objects>
             <point key="canvasLocation" x="1747.826086956522" y="133.69565217391306"/>
         </scene>
-        <!--Photo Upload View Controller-->
+        <!--Post Detail View Controller-->
+        <scene sceneID="m36-Zh-6GP">
+            <objects>
+                <viewController id="AeH-VH-WHJ" customClass="PostDetailViewController" customModule="pseudo_Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Hv-R6-TdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="feedBackground" translatesAutoresizingMaskIntoConstraints="NO" id="u8h-D1-Rgc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfl-xK-iZM">
+                                <rect key="frame" x="16" y="388" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5w-gV-luA">
+                                <rect key="frame" x="42" y="80" width="330" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="Udj-PL-Vzu"/>
+                                    <constraint firstAttribute="height" constant="300" id="foT-6X-0JQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2y-YG-i80">
+                                <rect key="frame" x="15.999999999999996" y="425" width="41.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f2y-YG-i80" firstAttribute="leading" secondItem="Pfl-xK-iZM" secondAttribute="leading" id="17p-bG-sY5"/>
+                            <constraint firstItem="f2y-YG-i80" firstAttribute="top" secondItem="Pfl-xK-iZM" secondAttribute="bottom" constant="16" id="9nq-8O-MbR"/>
+                            <constraint firstItem="Pfl-xK-iZM" firstAttribute="top" secondItem="m5w-gV-luA" secondAttribute="bottom" constant="8" id="Hm8-ch-AjD"/>
+                            <constraint firstItem="Pfl-xK-iZM" firstAttribute="leading" secondItem="AOb-3w-El2" secondAttribute="leading" constant="16" id="LGh-Vc-Who"/>
+                            <constraint firstItem="m5w-gV-luA" firstAttribute="top" secondItem="AOb-3w-El2" secondAttribute="top" constant="16" id="alN-rc-txd"/>
+                            <constraint firstItem="m5w-gV-luA" firstAttribute="leading" secondItem="AOb-3w-El2" secondAttribute="leading" constant="42" id="fwj-pg-4Vc"/>
+                            <constraint firstItem="AOb-3w-El2" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f2y-YG-i80" secondAttribute="trailing" constant="16" id="hWf-mc-HXG"/>
+                            <constraint firstItem="AOb-3w-El2" firstAttribute="trailing" secondItem="m5w-gV-luA" secondAttribute="trailing" constant="42" id="k8P-cH-kK3"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pfl-xK-iZM" secondAttribute="trailing" constant="16" id="v8s-vv-wKP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AOb-3w-El2"/>
+                    </view>
+                    <connections>
+                        <outlet property="postCommentLabel" destination="f2y-YG-i80" id="fja-iu-Ey1"/>
+                        <outlet property="postDateLabel" destination="Pfl-xK-iZM" id="iwT-ux-zPs"/>
+                        <outlet property="postDetailImage" destination="m5w-gV-luA" id="iYs-AW-kzk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lU1-CI-65H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1747.826086956522" y="895.92391304347836"/>
+        </scene>
+        <!--Upload Image-->
         <scene sceneID="nJU-ju-b5Y">
             <objects>
                 <viewController id="DiU-JC-WjR" customClass="PhotoUploadViewController" customModule="pseudo_Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,15 +238,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-tV-BBL">
-                                <rect key="frame" x="20" y="80" width="230" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imageUploadBackground" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-fN-JYg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-tV-BBL">
+                                <rect key="frame" x="42" y="114" width="330" height="300"/>
+                                <color key="backgroundColor" red="0.0981988643971939" green="0.10925803961563632" blue="0.23599417098445596" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="ibI-RT-p4Y"/>
-                                    <constraint firstAttribute="width" constant="300" id="yya-ZF-Zzi"/>
+                                    <constraint firstAttribute="height" constant="300" id="bsq-Sf-Y3D"/>
+                                    <constraint firstAttribute="width" constant="330" id="pw5-kw-3WR"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DM9-T3-nka">
-                                <rect key="frame" x="16" y="388" width="382" height="30"/>
+                            <textField opaque="NO" alpha="0.45000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DM9-T3-nka">
+                                <rect key="frame" x="16" y="430" width="382" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -195,14 +259,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qan-HN-Pyq" firstAttribute="trailing" secondItem="DM9-T3-nka" secondAttribute="trailing" constant="16" id="34N-PX-BU6"/>
-                            <constraint firstItem="pe5-tV-BBL" firstAttribute="top" secondItem="qan-HN-Pyq" secondAttribute="top" constant="16" id="FT1-OC-V73"/>
-                            <constraint firstItem="DM9-T3-nka" firstAttribute="leading" secondItem="qan-HN-Pyq" secondAttribute="leading" constant="16" id="HQF-fl-N2D"/>
-                            <constraint firstItem="DM9-T3-nka" firstAttribute="top" secondItem="pe5-tV-BBL" secondAttribute="bottom" constant="8" id="dAu-E2-iOT"/>
+                            <constraint firstItem="pe5-tV-BBL" firstAttribute="top" secondItem="qan-HN-Pyq" secondAttribute="top" constant="50" id="9ex-5V-Kfd"/>
+                            <constraint firstItem="qan-HN-Pyq" firstAttribute="trailing" secondItem="pe5-tV-BBL" secondAttribute="trailing" constant="42" id="Hlf-ZH-mih"/>
+                            <constraint firstItem="pe5-tV-BBL" firstAttribute="leading" secondItem="qan-HN-Pyq" secondAttribute="leading" constant="42" id="dRo-vZ-1hQ"/>
+                            <constraint firstItem="qan-HN-Pyq" firstAttribute="trailing" secondItem="DM9-T3-nka" secondAttribute="trailing" constant="16" id="hhc-HJ-yoh"/>
+                            <constraint firstItem="DM9-T3-nka" firstAttribute="centerX" secondItem="pe5-tV-BBL" secondAttribute="centerX" id="kvg-Wx-c35"/>
+                            <constraint firstItem="DM9-T3-nka" firstAttribute="top" secondItem="pe5-tV-BBL" secondAttribute="bottom" constant="16" id="mHq-4v-1rM"/>
+                            <constraint firstItem="DM9-T3-nka" firstAttribute="leading" secondItem="qan-HN-Pyq" secondAttribute="leading" constant="16" id="sCz-AC-8qs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qan-HN-Pyq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TT8-r0-it2">
+                    <navigationItem key="navigationItem" title="Upload Image" id="TT8-r0-it2">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Z81-V9-Obk">
                             <connections>
                                 <action selector="cancelUpload:" destination="DiU-JC-WjR" id="LDM-Sd-PoL"/>
@@ -261,6 +328,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feedBackground" width="901" height="1828"/>
+        <image name="imageUploadBackground" width="893" height="2029"/>
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="instagramTitle" width="743" height="252"/>
         <image name="loginBackground" width="903" height="1784"/>

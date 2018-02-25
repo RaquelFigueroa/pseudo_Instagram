@@ -94,4 +94,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = imageTableView.indexPath(for: cell) {
+            let post = posts[indexPath.row]
+            let postDetailViewController = segue.destination as! PostDetailViewController
+            postDetailViewController.post = post
+        }
+    }
 }
