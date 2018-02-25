@@ -31,7 +31,7 @@
                                 <rect key="frame" x="62" y="308" width="291" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBf-7d-2f6">
                                 <rect key="frame" x="62" y="354" width="291" height="30"/>
@@ -145,7 +145,7 @@
                                         <connections>
                                             <outlet property="postImageView" destination="orR-vK-9aR" id="ehF-af-o55"/>
                                             <outlet property="postLabel" destination="bRu-Pd-Nl3" id="ln1-cN-u0E"/>
-                                            <segue destination="AeH-VH-WHJ" kind="show" id="X3s-p1-uez"/>
+                                            <segue destination="AeH-VH-WHJ" kind="show" identifier="postDetailView" id="X3s-p1-uez"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -162,7 +162,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="1Z0-5m-Sgk">
                             <connections>
-                                <segue destination="xJ8-Se-AeE" kind="presentation" id="jww-s4-CtA"/>
+                                <segue destination="xJ8-Se-AeE" kind="show" identifier="uploadImage" id="Ncw-lu-TEb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -189,10 +189,10 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfl-xK-iZM">
                                 <rect key="frame" x="16" y="388" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5w-gV-luA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5w-gV-luA" customClass="PFImageView">
                                 <rect key="frame" x="42" y="80" width="330" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="Udj-PL-Vzu"/>
@@ -202,7 +202,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2y-YG-i80">
                                 <rect key="frame" x="15.999999999999996" y="425" width="41.666666666666657" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

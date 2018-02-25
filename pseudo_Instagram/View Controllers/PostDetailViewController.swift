@@ -38,6 +38,9 @@ class PostDetailViewController: UIViewController {
 
             postDateLabel.text = dateStr
             postCommentLabel.text = post["caption"] as? String
+            postDetailImage.file = post.media
+            postDetailImage.loadInBackground()
+//            cell.postImageView.loadInBackground()
 
         }
         

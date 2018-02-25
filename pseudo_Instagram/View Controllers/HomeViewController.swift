@@ -90,17 +90,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     
+    @IBAction func uploadNewImage(_ sender: Any) {
+        performSegue(withIdentifier: "uploadImage", sender: sender)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = imageTableView.indexPath(for: cell) {
-            let post = posts[indexPath.row]
-            let postDetailViewController = segue.destination as! PostDetailViewController
-            postDetailViewController.post = post
+        print(segue.identifier!)
+        if (segue.identifier == "uploadImage"){
+            _ = segue.destination as! UINavigationController
         }
+        else {
+            let cell = sender as! UITableViewCell
+            if let indexPath = imageTableView.indexPath(for: cell) {
+                let post = posts[indexPath.row]
+                let postDetailViewController = segue.destination as! PostDetailViewController
+                postDetailViewController.post = post
+            }
+        }
+
     }
+    
 }
