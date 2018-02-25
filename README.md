@@ -37,11 +37,11 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] Add auto layout to the login screen
-- [ ] Add auto layout to the home feed screen
-- [ ] Add auto layout to the post detail screen
-- [ ] Add auto layout to the photo upload screen
-- [ ] Add alerts for invalid login/sign up for login screen
+- [x] Add auto layout to the login screen
+- [x] Add auto layout to the home feed screen
+- [x] Add auto layout to the post detail screen
+- [x] Add auto layout to the photo upload screen
+- [x] Add alerts for invalid login/sign up for login screen
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
