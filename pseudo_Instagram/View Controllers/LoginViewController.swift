@@ -32,6 +32,15 @@ class LoginViewController: UIViewController {
                 print ("Logged in!")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
+            else {
+                let alertController = UIAlertController(title: "Invalid Username/Password", message: "Please, try again.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.viewDidLoad()
+                }
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true){}
+            }
         }
     }
     
@@ -47,8 +56,18 @@ class LoginViewController: UIViewController {
                 print ("Logged in!")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
-                print (error!.localizedDescription)
+                let alertController = UIAlertController(title: "Invalid Username/Password", message: "Please, try again.", preferredStyle: .alert)
+
+                let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.viewDidLoad()
+                }
+                alertController.addAction(okAction)
+
+                self.present(alertController, animated: true){
+                }
             }
+            
+            
         }
     }
     
