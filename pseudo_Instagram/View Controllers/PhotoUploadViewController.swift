@@ -13,8 +13,6 @@ class PhotoUploadViewController: UIViewController, UIImagePickerControllerDelega
    
     @IBOutlet weak var uploadText: UITextField!
     @IBOutlet weak var uploadImage: UIImageView!
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +20,7 @@ class PhotoUploadViewController: UIViewController, UIImagePickerControllerDelega
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
+
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             print("Camera is available 📸")
@@ -39,7 +38,7 @@ class PhotoUploadViewController: UIViewController, UIImagePickerControllerDelega
         // Get the image captured by the UIImagePickerController
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         var editedImage = originalImage
-        editedImage = resize(image: editedImage, newSize: CGSize(width: 400, height: 400))
+        editedImage = resize(image: editedImage, newSize: CGSize(width: 300, height: 300))
         
         // Do something with the images
         uploadImage.image = editedImage
@@ -63,7 +62,15 @@ class PhotoUploadViewController: UIViewController, UIImagePickerControllerDelega
     
     
     @IBAction func shareUpload(_ sender: Any) {
-        print ("Uploaded image!")
+        Post.postUserImage(image: uploadImage.image, withCaption: uploadText.text) { (success, error) in
+            if success {
+                print ("Uploaded image!")
+            }
+            else {
+                print (error?.localizedDescription)
+            }
+        }
+        
         
         dismiss(animated: true, completion: nil)
     }

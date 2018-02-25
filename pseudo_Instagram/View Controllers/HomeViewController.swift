@@ -1,5 +1,5 @@
 //
-//  homeFeedViewController.swift
+//  HomeViewController.swift
 //  pseudo_Instagram
 //
 //  Created by Raquel Figueroa-Opperman on 2/24/18.
@@ -10,41 +10,37 @@ import UIKit
 import Parse
 import ParseUI
 
-class homeFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var imageView: UITableView!
-    
+    @IBOutlet weak var imageTableView: UITableView!
     var refreshControl: UIRefreshControl!
     var posts: [Post] = []
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(homeFeedViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(HomeViewController.didPullToRefresh(_:)), for: .valueChanged)
         
-        imageView.insertSubview(refreshControl, at: 0)
-        imageView.dataSource = self
-        imageView.delegate = self
+        imageTableView.insertSubview(refreshControl, at: 0)
+        imageTableView.dataSource = self
+        imageTableView.delegate = self
         
         fetchPosts()
-        
     }
 
     func fetchPosts() {
         print ("Get posts!")
         let query = Post.query()
-        query?.order(byDescending: "createdAt")
-        query?.includeKey("author")
         query?.limit = 20
+        query?.order(byDescending: "_created_at")
+        query?.includeKey("author")
         
         // fetch data asynchronously
         query?.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
             if let posts = posts {
                 self.posts = posts as! [Post]
-                self.imageView.reloadData()
+                self.imageTableView.reloadData()
                 self.refreshControl.endRefreshing()
             } else {
                 print(error!.localizedDescription)
@@ -64,56 +60,38 @@ class homeFeedViewController: UIViewController, UITableViewDataSource, UITableVi
                     alertController.addAction(okAction)
                     
                     self.present(alertController, animated: true){
-                    } 
+                    }
                 }
             }
         }
     }
-    
-    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        fetchPosts()
-    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = imageView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        let post = posts[indexPath.section]
+        let cell = imageTableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        let post = posts[indexPath.row]
 
+        cell.postLabel.text = post.caption
         cell.postImageView.file = post.media
         cell.postImageView.loadInBackground()
-        
-        cell.postLabel.text = post.caption
         
         return cell
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchPosts()
     }
     
     @IBAction func logout(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let cell = sender as! UITableViewCell
-//
-//        if let indexPath =
-//
-//
-//        let cell = sender as! UITableViewCell
-//        if let indexPath = imageView.indexPath(for: cell) {
-//            let post = posts[indexPath.section]
-//            let vc = segue.destination as! PhotoDetailsViewController
-//            vc.photoDetail = post
-//        }
-//    }
-
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }

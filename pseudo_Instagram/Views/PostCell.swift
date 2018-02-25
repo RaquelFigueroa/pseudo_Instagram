@@ -12,8 +12,8 @@ import ParseUI
 
 class PostCell: UITableViewCell {
 
-    @IBOutlet weak var postLabel: UILabel!
     @IBOutlet weak var postImageView: PFImageView!
+    @IBOutlet weak var postLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
